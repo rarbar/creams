@@ -1,11 +1,10 @@
 import logo from "../scss/iqons/pizza-logo.svg";
-import cart from "../scss/iqons/cart.svg";
-import {Button} from "../components/Button";
+import {Button} from "./Button";
+
 
 export const Header = () => {
-    return(
+    return (
         <div className="header">
-            <Button />
             <div className="container">
                 <div className="header__logo">
                     <img width="38" src={logo}
@@ -16,7 +15,8 @@ export const Header = () => {
                     </div>
                 </div>
                 <div className="header__cart">
-                    <a href={cart} className="button button--cart">
+
+                    <Button className="button button--cart">
                         <span>520 ₽</span>
                         <div className="button__delimiter">+</div>
                         <svg
@@ -49,7 +49,9 @@ export const Header = () => {
                             />
                         </svg>
                         <span>3</span>
-                    </a>
+                    </Button>
+
+
                 </div>
             </div>
         </div>

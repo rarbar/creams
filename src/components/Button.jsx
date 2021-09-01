@@ -1,8 +1,16 @@
-export const Button = (props) => {
-    console.log(props)
+import classNames from 'classnames'
+import React from "react";
+
+
+export const Button = ({className, onclick, outline, children}) => {
     return (
-        <div>
-            <button>{props.children}</button>
-        </div>
+
+        <button
+            onClick={onclick}
+            className={classNames('button', className, {
+                'button--outline': outline,
+            })}>
+            {children}
+        </button>
     )
 }

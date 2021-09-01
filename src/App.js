@@ -1,13 +1,12 @@
 import './App.css';
-import logo from './scss/iqons/pizza-logo.svg'
-import cart from './scss/iqons/cart.svg'
-import {Header} from "./Header/header";
+import {Header} from "./components/header";
+import {Button} from "./components/Button";
 
 function App() {
     return (
         <div className="wrapper">
             <Header/>
-
+            <Button/>
             <div className="content">
                 <div className="container">
                     <div className="content__top">
