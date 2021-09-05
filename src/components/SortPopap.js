@@ -1,13 +1,19 @@
 import {useEffect, useRef, useState} from "react";
-import {logDOM} from "@testing-library/react";
 
-export const SortPopup = () => {
+
+export const SortPopup = ({items}) => {
 
     const [showPopup, setShowPopup] = useState(false)
+    const [activeItem, setActiveItem] = useState(0)
+    const sortRef = useRef()
+    const activeItemsName=items[activeItem]
     const togglePopup = () => {
         setShowPopup(!showPopup)
     }
-    const sortRef = useRef()
+    const onSelectItems = (index) => {
+        setActiveItem(index)
+        setShowPopup(false)
+    }
     const handleClick = (e) => {
         if(!e.path.includes(sortRef.current)){
             setShowPopup(false)
@@ -22,7 +28,7 @@ export const SortPopup = () => {
     return (
         <div ref={sortRef} className="sort">
             <div className="sort__label">
-                <svg
+                <svg className={showPopup && 'rotated'}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
@@ -36,14 +42,15 @@ export const SortPopup = () => {
                 </svg>
                 <b>Сортировка по:</b>
                 <span
-                    onClick={togglePopup}>популярности</span>
+                    onClick={togglePopup}>{activeItemsName}</span>
             </div>
             {showPopup &&
             <div className="sort__popup">
                 <ul>
-                    <li className="active">популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
+                    {items && items.map((name, index) => <li
+                        className={activeItem === index ? 'active' : ''}
+                        onClick={() => onSelectItems(index)}
+                        key={`${index}_${name}`}>{name}</li>)}
                 </ul>
             </div>
             }
