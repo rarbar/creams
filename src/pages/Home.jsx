@@ -3,6 +3,7 @@ import {SortPopup} from "../components/SortPopap";
 import {PizzaComponent} from "./pizzaComponent";
 
 export const Home = ({items}) => {
+
     return (
         <div className="container">
             <div className="content__top">
@@ -10,7 +11,9 @@ export const Home = ({items}) => {
                     'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые'
                 ]}/>
                 <SortPopup items={[
-                    'популярности', 'цене', 'алфавиту'
+                    {name:'популярности',type:'popular'},
+                    {name:'цене',type:'price'},
+                    {name:'алфавиту',type:'alfavite'}
                 ]}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
